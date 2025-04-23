@@ -15,11 +15,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
+import com.toedter.calendar.JDateChooser;
 
 /**
  *
@@ -30,7 +32,12 @@ Connection koneksi = database.koneksiDB();
 PreparedStatement pst;
 ResultSet rst;
 String tanggal,tanggal2, sql;
-private javax.swing.JPanel chartPanel;
+public javax.swing.JPanel chartPanel;
+private JDateChooser jDateChooser1;
+private JDateChooser jDateChooser2;
+private JDateChooser jDateChooser3;
+private JDateChooser jDateChooser4;
+
 
 
     /**
@@ -43,6 +50,14 @@ private javax.swing.JPanel chartPanel;
         delay();
         
     }
+    public void setKoneksi(Connection koneksi) {
+    this.koneksi = koneksi;
+    }
+
+    public void setChartPanel(JPanel chartPanel) {
+        this.chartPanel = chartPanel;
+    }
+
     
     public void delay(){
     Thread clock=new Thread(){
@@ -62,7 +77,7 @@ private javax.swing.JPanel chartPanel;
       };
     clock.start();
     }
-     public void tampilkanChart() {
+    public void tampilkanChart() {
     try {
         DefaultPieDataset dataset = new DefaultPieDataset();
 
@@ -88,7 +103,7 @@ private javax.swing.JPanel chartPanel;
     } catch (Exception e) {
         e.printStackTrace();
     }
-    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -98,8 +113,6 @@ private javax.swing.JPanel chartPanel;
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        jpaenel13= new javax.swing.JPanel
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -124,6 +137,11 @@ private javax.swing.JPanel chartPanel;
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(java.awt.Color.gray);
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+        });
 
         jPanel1.setBackground(java.awt.Color.gray);
 
@@ -425,6 +443,12 @@ private javax.swing.JPanel chartPanel;
         new login().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+        // TODO add your handling code here:
+        new CekStokBarang().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jPanel2MouseClicked
 
     /**
      * @param args the command line arguments
