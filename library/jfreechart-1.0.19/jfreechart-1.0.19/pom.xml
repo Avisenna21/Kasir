@@ -242,7 +242,11 @@
         <project.source.level>1.6</project.source.level>
         <project.target.level>1.6</project.target.level>
     </properties>
-
+<properties>
+  <sonar.organization>avisenna21</sonar.organization>
+  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+</properties>
+         
   <profiles>
     <profile> 
       <id>release</id>
